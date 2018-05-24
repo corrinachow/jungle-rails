@@ -1,0 +1,17 @@
+<article class="line_item">
+  <tr>
+  <td>
+    <%= image_tag(line_item.product.image.tiny, class: 'mx-auto d-block img-fluid img-thumbnail')   %>
+  </td>
+  <td>
+    <%= line_item.product.name %>
+    <br>
+  </td>
+  <td>
+    <%= line_item.quantity %>
+  </td>
+  <td>
+    &#36;<%= '%.2f' % (line_item.total_price_cents.to_i/100.00).to_s %>
+  </td>
+  </tr>
+</section>
