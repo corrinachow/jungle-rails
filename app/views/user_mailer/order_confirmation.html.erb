@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+Order confirmed!
+
+<p>Your total came to &#36;<%= '%.2f' % (@order.total_cents.to_i/100.00).to_s %></p>
+
+<p>Order summary:</p>
+<% @line_items.each do |line_item| %>
+<p><%= line_item.product.name %>: <%= line_item.quantity %></p>
+<% end %>
+
+</html>
