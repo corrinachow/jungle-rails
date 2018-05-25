@@ -143,10 +143,14 @@ cat3.products.create!({
 
 ## REVIEWS
 
-prod1.review.create!({
-  user_id: 1,
-  description: Faker::TwinPeaks.quote,
-  rating: 5,
-})
+Product.all.each do |product|
+  5.times do
+    product.reviews.create!({
+    user_id: 1,
+    description: Faker::TwinPeaks.quote,
+    rating: Faker::Number.between(1, 5) ,
+  })
+  end
+end
 
 puts "DONE!"
