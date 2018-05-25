@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
   def show
+    @user = User.select("email, fname, lname").find(session[:user_id])
   end
 
   def add_item
