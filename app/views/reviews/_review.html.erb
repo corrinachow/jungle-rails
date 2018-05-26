@@ -1,0 +1,16 @@
+<article class="review">
+  <tr>
+  <td>
+    <p><%= review.user.fname + " " +review.user.lname %></p>
+    <%= review.created_at %>
+  </td>
+  <td>
+    <p class="description">
+      <%= review.description %>
+    </p>
+  </td>
+  <td>
+    <%= pluralize(review.rating, 'star') %>
+  </td>
+  </tr>
+</article>
