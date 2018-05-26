@@ -25,7 +25,7 @@
       </div>
     </div>
   </article>
-<%= console %>
+  <% if current_user %>
     <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
       <%= form_for [@product, @review] do |form| %>
@@ -44,6 +44,7 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 
   <table class="table table-bordered">
       <thead>
