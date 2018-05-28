@@ -56,7 +56,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-
   context 'new user no lname' do
     let(:lname) { nil }
     it 'does not have lname' do
@@ -79,9 +78,41 @@ RSpec.describe User, type: :model do
 
     it 'does not meet minimum password length' do
       expect(subject).to be_invalid
-      puts subject.errors.messages
       expect(subject.errors.messages[:password]).to include("is too short (minimum is 6 characters)")
     end
+  end
+
+  context '.authenticate_with_credentials' do
+
+    before(:each) do
+
+      @testUser = User.new({
+      fname:  'Corrina',
+      lname: 'Chow',
+      password: '1234567890',
+      password_confirmation: '1234567890',
+      email: 'uniqueemail1@example.com',
+    })
+
+      @testUser.save!
+    end
+
+    it 'should return a truthy value' do
+      expect(User.authenticate_with_credentials(@testUser.email, @testUser.password)).to be_truthy
+    end
+
+    it 'should return a truthy value' do
+      expect(User.authenticate_with_credentials('UnIqUeEmAiL1@ExAmPlE.cOm', @testUser.password)).to be_truthy
+    end
+
+    it 'should return a truthy value' do
+      expect(User.authenticate_with_credentials('                 uniqueemail1@example.com               ', @testUser.password)).to be_truthy
+    end
+
+    after(:each) do
+      @testUser.destroy
+    end
+
   end
 
 end
