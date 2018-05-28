@@ -2,34 +2,49 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
 
-  context 'new product' do
-    cat1 = Category.find_or_create_by! name: 'Food'
+  cat1 = Category.find_or_create_by! name: 'Food'
 
-    subject = cat1.products.create!({
-      name:  'Coffee',
-      description: 'asdf',
-      image: 'coffee.jpg',
-      quantity: 420,
-      price: 69.99
-    })
+  let(:name) { 'Coffee' }
+  let(:description) { 'asdf' }
+  let(:price) { '1111' }
+  let(:qty) { 1 }
+  let(:image) { 'https://i.ytimg.com/vi/kYnx7nPw-xo/maxresdefault.jpg' }
 
-    it 'has a category' do
-      expect(subject.category).to be_present
+
+  subject {cat1.products.new({
+      name:  name,
+      description: description,
+      image: image,
+      quantity: qty,
+      price: price
+    })}
+
+  context 'new product base' do
+    it 'is valid' do
+      expect(subject).to be_valid
     end
-
-    it 'has a name' do
-      expect(subject.name).to be_present
-    end
-
-    it 'has a quantity' do
-      expect(subject.quantity).to be_present
-    end
-
-    it 'has a price' do
-      expect(subject.price).to be_present
-    end
-
   end
+
+  # context 'new product no category' do
+
+  #   subject.category_id = nil
+
+  #   it 'does not have a category' do
+  #     expect(subject.category_id).to be_nil
+  #   end
+
+  # end
+
+
+  # context 'new product no name' do
+
+  #   let(:name) { nil }
+
+  #   it 'does not have name' do
+  #     expect(subject).to be_invalid
+  #   end
+
+  # end
 
 
 
