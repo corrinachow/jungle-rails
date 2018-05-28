@@ -48,4 +48,29 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context 'new user no fname' do
+    let(:fname) { nil }
+
+    it 'does not have a fname' do
+      expect(subject.fname).to be_nil
+    end
+  end
+
+
+  context 'new user no lname' do
+    let(:lname) { nil }
+    it 'does not have lname' do
+      expect(subject).to be_invalid
+      expect(subject.errors.messages[:lname]).to include("can't be blank")
+    end
+  end
+
+  context 'new user no email' do
+    let(:email) { nil }
+    it 'does not have email' do
+      expect(subject).to be_invalid
+      expect(subject.errors.messages[:email]).to include("can't be blank")
+    end
+  end
+
 end
