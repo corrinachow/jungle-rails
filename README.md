@@ -1,6 +1,29 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 4.2.
+
+Features include:
+
+* Sold Out Badges when a product has 0 quantity
+* Admin Control Panel using namespaces
+* User Authentication/Registration
+* Order Details Page
+* Email Receipt formatted in HTML
+* Product Ratings
+
+## Final Product
+
+![Homepage](./docs/homepage.png)
+
+Homepage
+
+![Product view](./docs/product-view-page.png)
+
+Product view
+
+![Order confirmation](./docs/order-confirmation.png)
+
+Order confirmation
 
 
 ## Setup
@@ -21,8 +44,30 @@ Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
 
-## Dependencies
+## Dependancies
 
-* Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
-* PostgreSQL 9.x
-* Stripe
+- PostgreSQL 9.x
+- bcrypt
+- bootstrap-sass
+- byebug
+- carrierwave
+- dotenv-rails
+- faker
+- font-awesome-rails
+- jbuilder
+- jquery-rails
+- money-rails
+- newrelic_rpm
+- pg
+- puma
+- quiet_assets
+- rails (= 4.2.6)
+- rails_12factor
+- rmagick
+- sass-rails
+- sdoc
+- spring
+- stripe
+- turbolinks
+- uglifier (>= 1.3.0)
+- web-console
