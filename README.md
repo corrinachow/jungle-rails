@@ -28,7 +28,7 @@ Order confirmation
 
 ## Setup
 
-1. Fork & Clone
+1. Clone this repository
 2. Run `bundle install` to install dependencies
 3. Create `config/database.yml` by copying `config/database.example.yml`
 4. Create `config/secrets.yml` by copying `config/secrets.example.yml`
