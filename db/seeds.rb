@@ -15,8 +15,9 @@ end
 
 # Only run on development (local) instances not on production, etc.
 unless Rails.env.development?
-  puts "Development seeds only (for now)!"
-  exit 0
+  cat1 = Category.find_or_create_by! name: 'Apparel'
+  cat2 = Category.find_or_create_by! name: 'Electronics'
+  cat3 = Category.find_or_create_by! name: 'Furniture'
 end
 
 # Let's do this ...
