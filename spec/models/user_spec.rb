@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
   let(:fname) { 'Corrina' }
   let(:lname) { 'Chow' }
   let(:email) { 'unique@example.com' }
-  let(:password_confirmation) { 'asdf' }
-  let(:password) { 'asdf' }
+  let(:password_confirmation) { 'asdfasdf' }
+  let(:password) { 'asdfasdf' }
 
 
   subject { User.new({
@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'password confirmation' do
-    let(:password_confirmation) { 'asdfasdf' }
+    let(:password_confirmation) { 'asdfghjkl' }
     it 'passwords should do not match' do
       expect(subject).to be_invalid
       expect(subject.errors.messages[:password_confirmation]).to include("doesn't match Password")
@@ -70,6 +70,17 @@ RSpec.describe User, type: :model do
     it 'does not have email' do
       expect(subject).to be_invalid
       expect(subject.errors.messages[:email]).to include("can't be blank")
+    end
+  end
+
+  context 'new user minimum password length' do
+    let(:password) { '1234' }
+    let(:password_confirmation) { '1234' }
+
+    it 'does not meet minimum password length' do
+      expect(subject).to be_invalid
+      puts subject.errors.messages
+      expect(subject.errors.messages[:password]).to include("is too short (minimum is 6 characters)")
     end
   end
 
