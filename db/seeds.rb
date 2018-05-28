@@ -21,14 +21,15 @@ User.transaction do
   end
 
   # Let's do this ...
-
+  pw = Faker::Internet.password
+  puts pw
   ## USERS
-  puts Faker::Internet.password
   User.create!({
     fname: 'Corrina',
     lname: 'Chow',
     email: 'example@example.com',
-    password_digest: Faker::Internet.password
+    password: pw,
+    password_confirmation: pw
   })
 
   ## CATEGORIES
