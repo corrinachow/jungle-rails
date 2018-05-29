@@ -14,11 +14,11 @@ User.transaction do
   # end
 
   # Only run on development (local) instances not on production, etc.
-  unless Rails.env.development?
-    cat1 = Category.find_or_create_by! name: 'Apparel'
-    cat2 = Category.find_or_create_by! name: 'Electronics'
-    cat3 = Category.find_or_create_by! name: 'Furniture'
-  end
+  # unless Rails.env.development?
+  #   cat1 = Category.find_or_create_by! name: 'Apparel'
+  #   cat2 = Category.find_or_create_by! name: 'Electronics'
+  #   cat3 = Category.find_or_create_by! name: 'Furniture'
+  # end
 
   # Let's do this ...
   pw = Faker::Internet.password
@@ -27,7 +27,7 @@ User.transaction do
   User.create!({
     fname: 'Corrina',
     lname: 'Chow',
-    email: 'example@example.com',
+    email: 'email@example.com',
     password: pw,
     password_confirmation: pw
   })
