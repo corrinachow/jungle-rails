@@ -3,6 +3,10 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
+  <% @cart_total = 0 %>
+  <% if @cart_total == 0 %>
+  <i>Your cart is empty.</i>
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -14,7 +18,6 @@
         </tr>
       </thead>
       <tbody>
-        <% @cart_total = 0 %>
         <% cart.each do |product_id, details| %>
           <%= render 'item', product_id: product_id, details: details %>
         <% end %>
@@ -31,22 +34,24 @@
       </tfoot>
     </table>
   </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= @cart_total * 100 %>"
-          data-name="Jungle"
-          data-description="<%= @user.fname + @user.lname %> Jungle Order"
-          data-locale="auto"
-          data-email="<%= @user.email %>"
-          data-currency="cad">
-        </script>
-      <% end %>
+  <% end %>
+  <% if session[:user_id] %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= form_tag orders_path do %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-amount="<%= @cart_total * 100 %>"
+            data-name="Jungle"
+            data-description="<%= @user.fname + @user.lname %> Jungle Order"
+            data-locale="auto"
+            data-email="<%= @user.email %>"
+            data-currency="cad">
+          </script>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
 </section>
