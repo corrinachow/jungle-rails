@@ -4,7 +4,7 @@
     <h1>My Cart</h1>
   </header>
   <% @cart_total = 0 %>
-  <% if @cart_total == 0 %>
+  <% if cart.empty? %>
   <i>Your cart is empty.</i>
   <% else %>
   <div class="panel panel-default items">
@@ -35,7 +35,7 @@
     </table>
   </div>
   <% end %>
-  <% if session[:user_id] %>
+  <% if current_user && !cart.empty? %>
     <div class="row">
       <div class="col-xs-12">
         <%= form_tag orders_path do %>
