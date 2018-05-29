@@ -3,8 +3,6 @@ class CartsController < ApplicationController
   def show
     if session[:user_id]
       @user = User.select("email, fname, lname").find(session[:user_id])
-    else
-      @user = ({fname:nil,lname:nil,email:nil})
     end
   end
 
