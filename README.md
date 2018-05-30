@@ -13,6 +13,10 @@ Features include:
 
 ## Final Product
 
+[Live preview deployed on Heroku](https://jungle-rails-application.herokuapp.com/)
+
+**Order confirmation emails have not been implemented yet on live version**
+
 ![Homepage](./docs/homepage.png)
 
 Homepage
